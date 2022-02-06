@@ -1,0 +1,62 @@
+<odoo>
+  <data>
+        <record id="supplier_action" model="ir.actions.act_window">
+            <field name="name">Material Supplier</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">material.supplier</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="material_action" model="ir.actions.act_window">
+            <field name="name">Material Material</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">material.material</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="material_view_search" model="ir.ui.view">
+            <field name="name">material.material.search</field>
+            <field name="model">material.material</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <filter string="Type Fabric"
+                            name="type"
+                            domain="[('type', 'ilike' ,'fabric')]" />
+                    <filter string="Type Jeans"
+                            name="type"
+                            domain="[('type', 'ilike' ,'jeans')]" />
+                    <filter string="Type Cotton"
+                            name="type"
+                            domain="[('type', 'ilike' ,'cotton')]" />
+                </search>
+            </field>
+        </record>
+        <record id="material_view_tree" model="ir.ui.view">
+                <field name="name">material.material.tree</field>
+                <field name="model">material.material</field>
+                <field name="arch" type="xml">
+                     <tree string="Material">
+                         <field name="code"/>
+                         <field name="name"/>
+                         <field name="buy_price"/>
+                         <field name="type"/>
+                         <field name="supplier_id"/>
+                     </tree>
+                </field>
+         </record>
+     <!-- Top menu item -->
+        <menuitem id="material_root"
+            name="Material"
+            sequence="99"/>
+
+        <menuitem id="material_menu"
+            name="Material"
+            parent="material_root"
+            action="material_action"
+            sequence="1"/>
+
+        <menuitem id="supplier_menu"
+            name="Supplier"
+            parent="material_root"
+            action="supplier_action"
+            sequence="2"/>
+  </data>
+</odoo>
